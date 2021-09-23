@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
