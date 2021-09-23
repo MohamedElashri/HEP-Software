@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:focal
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
@@ -11,7 +11,8 @@ COPY packages packages
 
 
 # Install additional packages
-RUN apt-get update -qq \
+RUN add-apt-repository ppa:rock-core/qt4 \
+  apt-get update -qq \
  && ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
  && apt-get -y install $(cat packages) \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
