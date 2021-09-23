@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
-ENV G4_version 10.07.p02
+ENV G4_version 10.05
 
 RUN apt-get update -y && \
     apt-get install -y cmake curl g++ libexpat1-dev vim cmake-curses-gui freeglut3 freeglut3-dev mesa-utils python libx11-dev libxmu-dev expat && \
