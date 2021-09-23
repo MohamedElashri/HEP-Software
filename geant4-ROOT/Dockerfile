@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:bionic
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
@@ -6,20 +6,6 @@ ENV PYTHONDONTWRITEBYTECODE = 1.
 
 # Python packages required in the build
 COPY packages packages
-
-#update CMAKE
-RUN apt remove cmake  \
-    apt-get install build-essential libssl-dev\
-    wget http://www.cmake.org/files/v3.16/cmake-3.16.6.tar.gz \
-    tar xf cmake-3.16.6.tar.gz \
-    cd cmake-3.16.6 \
-    apt-get install build-essential \
-    chmod  777 cmake-3.16.6 \
-    ./bootstrap \
-    make \
-    make install \
-    cmake --version \
-    rm cmake-3.20.0.tar.gz
 
 
 
