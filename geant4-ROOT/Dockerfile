@@ -15,8 +15,9 @@ RUN apt-get update -qq \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
  && rm -rf /packages /var/lib/apt/lists/* \
  && python3 -m pip install --upgrade pip \
- && python3 -m pip install numpy scipy pandas matplotlib pypact 
- 
+ && python3 -m pip install numpy scipy pandas matplotlib pypact \
+ && mkdir software && cd software
+
 WORKDIR /
 RUN wget https://root.cern.ch/download/root_v$ROOT_VERSION.source.tar.gz &&\
     tar -zxf root_v$ROOT_VERSION.source.tar.gz &&\
