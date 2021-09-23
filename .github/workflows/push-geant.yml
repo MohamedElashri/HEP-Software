@@ -1,4 +1,4 @@
-name:  Build Image & Push to Dockerhub
+name:  Build Geant4 & Push to Dockerhub
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context:  geant4/ .
+          context:./geant4/
           platforms: linux/amd64
           push: true
           tags: melashri/geant4:latest
