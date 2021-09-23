@@ -8,11 +8,11 @@ ENV PYTHONDONTWRITEBYTECODE = 1.
 COPY packages packages
 
 
-
+RUN apt-get install software-properties-common \
+    add-apt-repository ppa:rock-core/qt4 
 
 # Install additional packages
-RUN add-apt-repository ppa:rock-core/qt4 \
-  apt-get update -qq \
+RUN apt-get update -qq \
  && ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
  && apt-get -y install $(cat packages) \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
