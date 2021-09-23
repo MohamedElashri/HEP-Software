@@ -10,9 +10,11 @@ COPY packages packages
 #update CMAKE
 RUN apt remove cmake  \
     apt-get install build-essential libssl-dev\
-    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz \
-    tar -zxvf cmake-3.20.0.tar.gz \
-    cd cmake-3.20.0 \
+    wget http://www.cmake.org/files/v3.16/cmake-3.16.6.tar.gz \
+    tar xf cmake-3.16.6.tar.gz \
+    cd cmake-3.16.6 \
+    apt-get install build-essential \
+    sudo chmod -R 777 cmake-3.16.6 \
     ./bootstrap \
     make \
     make install \
