@@ -28,7 +28,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context:  MadGraph-Delphes-ROOT/ .
+          context: ./MadGraph-Delphes-ROOT/
           platforms: linux/amd64
           push: true
           tags: melashri/hep-tools:latest
