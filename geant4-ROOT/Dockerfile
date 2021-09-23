@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM debian:stretch-backports
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
