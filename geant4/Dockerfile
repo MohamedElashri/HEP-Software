@@ -21,7 +21,7 @@ RUN apt-get update -y && \
           ../src/geant4.10.07.p02 && \
     make -j`nproc` && \
     make install && \
-    rm /geant4.tar.gz 
+    rm /geant4.10.07.p02.tar.gz 
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
