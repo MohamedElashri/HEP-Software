@@ -3,7 +3,7 @@ LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 ENV G4_version 10.06.p02
 
 RUN apt-get update -y && \
-    apt-get install -y cmake curl g++ libexpat1-dev vim cmake-curses-gui freeglut3 freeglut3-dev mesa-utils python libx11-dev libxmu-dev expat && \
+    apt-get install -y cmake curl g++ libexpat1-dev vim cmake-curses-gui freeglut3 freeglut3-dev mesa-utils python libx11-dev libxmu-dev expat wget && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /opt/geant4/src && \
     mkdir -p /opt/geant4/build && \
