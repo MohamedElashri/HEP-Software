@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE = 1.
 # Python packages required in the build
 COPY packages packages
 
-RUN apt-get install gpg
+RUN apt-get install gnupg
 
 RUN apt-get update\
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - |  tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null \
