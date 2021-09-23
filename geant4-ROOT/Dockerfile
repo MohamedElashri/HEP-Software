@@ -3,7 +3,7 @@ LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
 ENV PYTHONDONTWRITEBYTECODE = 1.
-ENV ROOT_VERSION=6.16.00
+ENV ROOT_VERSION=6.12.04
 # Python packages required in the build
 COPY packages packages
 
