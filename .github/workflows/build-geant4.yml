@@ -16,5 +16,5 @@ jobs:
     - name: Build the Docker image
       run: |
          cd geant4
-         docker build . --file Dockerfile --tag melashri/Geant4:$(date +%s)
+         docker build . --file Dockerfile --tag melashri/geant4:$(date +%s)
 
