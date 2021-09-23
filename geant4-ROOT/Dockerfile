@@ -1,9 +1,9 @@
-FROM debian:sid
+FROM ubuntu:18.04
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
 ENV PYTHONDONTWRITEBYTECODE = 1.
-
+ENV ROOT_VERSION=6.16.00
 # Python packages required in the build
 COPY packages packages
 
@@ -15,33 +15,21 @@ RUN apt-get update -qq \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
  && rm -rf /packages /var/lib/apt/lists/* \
  && python3 -m pip install --upgrade pip \
- && python3 -m pip install numpy scipy pandas matplotlib pypact \
- && mkdir software && cd software && git clone https://github.com/root-project/root \
- && mkdir root-build && cd root-build \
- && cmake -DBUILD_SHARED_LIBS=OFF \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -Dasimage=ON \
-        -Dcxx14=ON \
-        -Dbuiltin_freetype=ON \
-        -Dbuiltin_xrootd=ON \
-        -Dbuiltin_tbb=ON \
-        -Dbuiltin_vdt=ON \
-        -Dgdml=ON \
-        -Dopengl=OFF \
-        -Dpythia6=OFF \
-        -Dpythia8=ON \
-        -Droofit=ON \
-        -Doracle=OFF \
-        -Dx11=ON \
-        -Dshared=ON \
-        -Droofit=ON \
-        -Dfail-on-missing=ON \
-        /software/root \
- && make -j16 \
- && make install -j16 \
- && cd /software && git clone https://github.com/Geant4/geant4 \
- && mkdir geant4-build && cd geant4-build \
- && cmake -DGEANT4_BUILD_MULTITHREADED=ON \
+ && python3 -m pip install numpy scipy pandas matplotlib pypact 
+ 
+WORKDIR /
+RUN wget https://root.cern.ch/download/root_v$ROOT_VERSION.source.tar.gz &&\
+    tar -zxf root_v$ROOT_VERSION.source.tar.gz &&\
+    rm root_v6.16.00.source.tar.gz &&\
+    mkdir root-build && cd root-build &&\
+    cmake ../root-6.16.00 &&\
+    cmake --build . -- -j4 &&\
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/local/root-6.16.00 -P cmake_install.cmake &&\
+    cd .. && rm -r root-build && rm -r root-6.16.00  
+
+  RUN  cd /software && git clone https://github.com/Geant4/geant4 \
+       && mkdir geant4-build && cd geant4-build \
+       && cmake -DGEANT4_BUILD_MULTITHREADED=ON \
           -DGEANT4_BUILD_CXXSTD='14' \
           -DGEANT4_INSTALL_DATA=ON \
           -DGEANT4_USE_GDML=ON \
