@@ -7,14 +7,6 @@ ENV PYTHONDONTWRITEBYTECODE = 1.
 # Python packages required in the build
 COPY packages packages
 
-RUN apt-get install gnupg
-
-RUN apt-get update\
-    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - |  tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null \
-    echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ bionic main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null \ 
-    apt-get update \
-    rm /usr/share/keyrings/kitware-archive-keyring.gpg \ 
-    apt-get install kitware-archive-keyring \ 
 
 # Install additional packages
 RUN apt-get update -qq \
@@ -24,7 +16,7 @@ RUN apt-get update -qq \
  && rm -rf /packages /var/lib/apt/lists/* \
  && python3 -m pip install --upgrade pip \
  && python3 -m pip install numpy scipy pandas matplotlib pypact \
- && mkdir software && cd software && git clone https://github.com/root-project/root \
+ && mkdir software && cd software && git clone https://github.com/thomasms/geant4 \
  && mkdir root-build && cd root-build \
  && cmake -DBUILD_SHARED_LIBS=OFF \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
