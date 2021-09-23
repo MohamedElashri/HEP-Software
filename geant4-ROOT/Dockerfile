@@ -7,10 +7,19 @@ ENV PYTHONDONTWRITEBYTECODE = 1.
 # Python packages required in the build
 COPY packages packages
 
+#update CMAKE
+RUN apt remove cmake  \
+    apt-get install build-essential libssl-dev\
+    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz \
+    tar -zxvf cmake-3.20.0.tar.gz \
+    cd cmake-3.20.0 \
+    ./bootstrap \
+    make \
+    make install \
+    cmake --version \
+    rm cmake-3.20.0.tar.gz
 
-RUN apt update \
-    apt-get install software-properties-common \
-    add-apt-repository ppa:rock-core/qt4 
+
 
 # Install additional packages
 RUN apt update \
