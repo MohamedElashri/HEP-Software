@@ -9,7 +9,7 @@ RUN apt-get update -y && \
     mkdir -p /opt/geant4/build && \
     mkdir -p /opt/geant4/install && \
     mkdir -p /opt/geant4/data && \
-    wget -o https://geant4-data.web.cern.ch/releases/geant4.10.07.p02.tar.gz && \
+    wget  https://geant4-data.web.cern.ch/releases/geant4.10.07.p02.tar.gz && \
     tar -xf /geant4.10.07.p02.tar.gz -C /opt/geant4/src && \
     cd /opt/geant4/build && \
     cmake -DCMAKE_INSTALL_PREFIX=/opt/geant4/install \
