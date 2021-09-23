@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:18.04
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
@@ -24,8 +24,7 @@ RUN apt remove cmake  \
 
 
 # Install additional packages
-RUN apt update \
-    apt-get update -qq \
+RUN apt-get update -qq \
  && ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
  && apt-get -y install $(cat packages) \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
