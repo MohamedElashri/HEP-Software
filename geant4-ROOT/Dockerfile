@@ -14,7 +14,7 @@ RUN apt remove cmake  \
     tar xf cmake-3.16.6.tar.gz \
     cd cmake-3.16.6 \
     apt-get install build-essential \
-    sudo chmod -R 777 cmake-3.16.6 \
+    chmod  777 cmake-3.16.6 \
     ./bootstrap \
     make \
     make install \
