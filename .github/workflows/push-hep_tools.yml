@@ -17,7 +17,7 @@ jobs:
         image: melashri/hep-tools
         registry: docker.io
         directory: MadGraph-Delphes-ROOT
-        dockerfile:MadGraph-Delphes-ROOT/Dockerfile
+        dockerfile: MadGraph-Delphes-ROOT/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
