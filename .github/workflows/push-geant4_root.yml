@@ -1,4 +1,4 @@
-name: push geant4_root
+name: Build Geant4-ROOT & Push to Dockerhub
 
 on:
   push:
