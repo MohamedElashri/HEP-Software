@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM alpine:latest
 LABEL maintainer =  Mohamed Elashri <elashrmr@mail.uc.edu>
 
 #Ignore generated .pyc files
@@ -16,7 +16,7 @@ RUN apt-get update -qq \
  && rm -rf /packages /var/lib/apt/lists/* \
  && python3 -m pip install --upgrade pip \
  && python3 -m pip install numpy scipy pandas matplotlib pypact \
- && mkdir software && cd software && git clone https://github.com/thomasms/geant4 \
+ && mkdir software && cd software && git clone https://github.com/root-project/root \
  && mkdir root-build && cd root-build \
  && cmake -DBUILD_SHARED_LIBS=OFF \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
