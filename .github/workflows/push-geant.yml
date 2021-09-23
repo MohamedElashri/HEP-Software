@@ -16,6 +16,7 @@ jobs:
       with:
         image: melashri/geant4
         registry: docker.io
+        directory: geant4
         dockerfile: geant4/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
