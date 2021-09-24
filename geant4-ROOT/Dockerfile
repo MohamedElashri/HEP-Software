@@ -44,6 +44,7 @@ RUN mkdir -p /opt/geant4/src && \
           -DGEANT4_BUILD_VERBOSE_CODE=OFF \
           -DGEANT4_BUILD_MULTITHREADED=ON \
           -DGEANT4_USE_PYTHON=ON \
+.         -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
           -DGEANT4_INSTALL_EXAMPLES=ON \
           ../src/geant4.10.07.p02 && \
           -DBUILD_STATIC_LIBS=ON \
