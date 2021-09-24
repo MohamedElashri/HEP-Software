@@ -47,8 +47,9 @@ RUN mkdir -p /opt/geant4/src && \
           -DGEANT4_BUILD_MULTITHREADED=ON \
           -DGEANT4_USE_PYTHON=OFF \
           -DGEANT4_INSTALL_EXAMPLES=ON \
-          ../src/geant4.10.07.p02 && \
           -DBUILD_STATIC_LIBS=ON \
+          ../src/geant4.10.07.p02 && \
+          
     make -j`nproc` && \
     make install && \
     rm /geant4.10.07.p02.tar.gz 
