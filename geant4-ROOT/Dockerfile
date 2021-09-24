@@ -8,7 +8,7 @@ ENV ROOT_VERSION=6.12.04
 COPY packages packages
 
 
-# Install additional packages
+# Install system packages
 RUN apt-get update -qq \
  && ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
  && apt-get -y install $(cat packages) \
@@ -17,6 +17,19 @@ RUN apt-get update -qq \
  && python3 -m pip install --upgrade pip \
  && python3 -m pip install numpy scipy pandas matplotlib pypact \
  && mkdir software && cd software
+
+
+ # Compile a custom version of the boost libraries for Python3 support
+RUN wget --no-verbose https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz && \
+ tar xzf boost_1_77_0.tar.gz && \
+ cd boost_1_77_0 && \
+ ln -s /usr/local/include/python3.8m /usr/local/include/python3.8 && \
+ ./bootstrap.sh --with-python=$(which python3) && \
+ ./b2 install && \
+ rm /usr/local/include/python3.8 && \
+ ldconfig && \
+ cd - && rm -rf *
+
 
 WORKDIR /
 RUN wget https://root.cern.ch/download/root_v$ROOT_VERSION.source.tar.gz &&\

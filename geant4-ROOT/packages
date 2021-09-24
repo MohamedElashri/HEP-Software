@@ -48,7 +48,7 @@ libz-dev
 locales
 lsb-release
 make
-python3
+python3.8
 python-dev
 python3-pip
 r-base
