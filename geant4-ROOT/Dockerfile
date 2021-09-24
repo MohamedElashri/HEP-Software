@@ -19,17 +19,6 @@ RUN apt-get update -qq \
  && mkdir software && cd software
 
 
- # Compile a custom version of the boost libraries for Python3 support
-RUN wget --no-verbose https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz && \
- tar xzf boost_1_77_0.tar.gz && \
- cd boost_1_77_0 && \
- ln -s /usr/local/include/python3.8m /usr/local/include/python3.8 && \
- ./bootstrap.sh --with-python=$(which python3) && \
- ./b2 install && \
- rm /usr/local/include/python3.8 && \
- ldconfig && \
- cd - && rm -rf *
-
 
 WORKDIR /
 RUN wget https://root.cern.ch/download/root_v$ROOT_VERSION.source.tar.gz &&\
@@ -56,8 +45,7 @@ RUN mkdir -p /opt/geant4/src && \
           -DGEANT4_INSTALL_DATADIR=/opt/geant4/data \
           -DGEANT4_BUILD_VERBOSE_CODE=OFF \
           -DGEANT4_BUILD_MULTITHREADED=ON \
-          -DGEANT4_USE_PYTHON=ON \
-.         -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
+          -DGEANT4_USE_PYTHON=OFF \
           -DGEANT4_INSTALL_EXAMPLES=ON \
           ../src/geant4.10.07.p02 && \
           -DBUILD_STATIC_LIBS=ON \
