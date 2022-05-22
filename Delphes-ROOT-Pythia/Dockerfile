@@ -37,8 +37,6 @@ RUN apt-get update \
     tcl \
     wget
     
-# Install python packages
-RUN pip install --upgrade pip
 
 RUN mkdir -p /opt \
  && curl -sL https://root.cern/download/root_v6.24.02.Linux-ubuntu20-x86_64-gcc9.3.tar.gz | tar -C /opt -zxf - \
