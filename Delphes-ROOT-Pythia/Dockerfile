@@ -33,7 +33,6 @@ RUN apt-get update \
     libxt-dev \
     make \
     python-dev \
-    python-pip \
     rsync \
     tcl \
     wget
