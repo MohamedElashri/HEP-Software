@@ -47,13 +47,6 @@ RUN mkdir -p /opt \
  && cd - \
  && rm -rf /opt/pythia8307
  
-#Download Delphes 3.4.1
-RUN wget http://cp3.irmp.ucl.ac.be/downloads/Delphes-3.4.1.tar.gz
-RUN tar -zxf Delphes-3.4.1.tar.gz \
-    && mv Delphes-3.4.1/* . \
-    && rm -r Delphes-3.4.1*
-#Install Delphes
-RUN make -j 4
 
 
 ENV ROOTSYS=/opt/root
@@ -62,3 +55,12 @@ ENV PYTHONPATH=$ROOTSYS/lib:$PYTHONPATH
 ENV LD_LIBRARY_PATH=$ROOTSYS/lib:$LD_LIBRARY_PATH
 ENV PYTHIA8=/opt/pythia
 ENV LD_LIBRARY_PATH=$PYTHIA8/lib:$LD_LIBRARY_PATH
+
+#Download Delphes 3.4.1
+RUN wget http://cp3.irmp.ucl.ac.be/downloads/Delphes-3.4.1.tar.gz
+RUN tar -zxf Delphes-3.4.1.tar.gz \
+    && mv Delphes-3.4.1/* . \
+    && rm -r Delphes-3.4.1*
+#Install Delphes
+RUN make -j 4
+
